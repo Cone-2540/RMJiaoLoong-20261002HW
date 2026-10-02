@@ -3,8 +3,8 @@
 
 #include "main.h"
 
-/* 每次接收和回传 4 字节 */
-#define UART_FORWARD_SIZE 4U
+/* 接收缓冲区容量：10 字节 */
+#define UART_FORWARD_SIZE 10U
 
 #ifdef __cplusplus
 extern "C" {

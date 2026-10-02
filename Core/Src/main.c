@@ -21,10 +21,11 @@
 #include "dma.h"
 #include "usart.h"
 #include "gpio.h"
+#include "uart_callback.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "uart_callback.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
