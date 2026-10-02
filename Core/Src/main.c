@@ -21,11 +21,11 @@
 #include "dma.h"
 #include "usart.h"
 #include "gpio.h"
-#include "uart_callback.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "remote_bridge.h"
+#include "uart_callback.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,6 +46,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+volatile bool remote_connected = false;
 uint8_t rx_msg[UART_FORWARD_SIZE] = {0};
 /* USER CODE END PV */
 
@@ -91,7 +92,9 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_USART1_UART_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
+  Remote_Init();
   if (UART_Callback_StartReceive() != HAL_OK)
   {
     Error_Handler();
@@ -102,10 +105,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    remote_connected = Remote_IsConnected();
   }
   /* USER CODE END 3 */
 }

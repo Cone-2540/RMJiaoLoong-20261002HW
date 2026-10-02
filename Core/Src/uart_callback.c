@@ -2,7 +2,7 @@
 #include "usart.h"
 #include "uart_callback.h"
 #include <string.h>
-
+#include "remote_bridge.h"
 /* main.c 中定义的接收缓冲区 */
 extern uint8_t rx_msg[UART_FORWARD_SIZE];
 
@@ -35,6 +35,11 @@ HAL_StatusTypeDef UART_Callback_StartReceive(void)
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart,
                                uint16_t Size)
 {
+    if (huart->Instance == USART3)
+    {
+        Remote_OnRxEvent(huart, Size);
+        return;
+    }
     if (huart->Instance == USART1)
     {
         HAL_UART_RxEventTypeTypeDef event = HAL_UARTEx_GetRxEventType(huart);

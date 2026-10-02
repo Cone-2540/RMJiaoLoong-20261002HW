@@ -330,7 +330,7 @@
             <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
-            <v6LangP>5</v6LangP>
+            <v6LangP>6</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
@@ -479,6 +479,16 @@
               <FileName>stm32f4xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f4xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>remote.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\remote.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>remote_bridge.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\remote_bridge.cpp</FilePath>
             </File>
           </Files>
         </Group>
