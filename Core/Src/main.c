@@ -23,7 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "uart_callback.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,7 +44,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint8_t rx_msg[4] = {0};
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -93,7 +93,7 @@ int main(void)
                     LED_BLUE_Pin,
                     GPIO_PIN_RESET);
 
-  if (HAL_UART_Receive_IT(&huart1, rx_msg, 1U) != HAL_OK)
+  if (UART_Callback_StartReceive() != HAL_OK)
   {
     Error_Handler();
   }
@@ -153,36 +153,6 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-  if (huart->Instance == USART1)
-  {
-    switch (rx_msg[0])
-    {
-    case 'R':
-      /* 大写 R：蓝灯灭 */
-      HAL_GPIO_WritePin(LED_BLUE_GPIO_Port,
-                        LED_BLUE_Pin,
-                        GPIO_PIN_RESET);
-      break;
-
-    case 'M':
-      /* 大写 M：蓝灯亮 */
-      HAL_GPIO_WritePin(LED_BLUE_GPIO_Port,
-                        LED_BLUE_Pin,
-                        GPIO_PIN_SET);
-      break;
-
-    default:
-      /* 其他字符：保持当前灯状态 */
-      break;
-    }
-
-    /* 本次接收结束后，启动下一次 1 字节接收 */
-    HAL_UART_Receive_IT(&huart1, rx_msg, 1U);
-  }
-}
 
 /* USER CODE END 4 */
 
