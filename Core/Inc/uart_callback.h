@@ -3,6 +3,9 @@
 
 #include "main.h"
 
+/* 每次接收和回传 4 字节 */
+#define UART_FORWARD_SIZE 4U
+
 #ifdef __cplusplus
 extern "C" {
 #endif

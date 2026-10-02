@@ -45,7 +45,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint8_t rx_msg[4] = {0};
+uint8_t rx_msg[UART_FORWARD_SIZE] = {0};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
